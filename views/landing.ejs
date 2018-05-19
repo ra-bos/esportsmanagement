@@ -1,20 +1,149 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>eSports Management System</title>
-        <link rel="stylesheet" href="/stylesheets/landing.css">
-    </head>
-    <body>
-        <div id="content">
-            <h1>Login</h1>
-            <form action="/login" method="POST">
-                <span>Username</span><br>
-                <input type="text" placeholder="Username" name="username"><br>
-                <span>Password</span><br>
-                <input type="password" placeholder="Password" name="password">
-                <br>
-                <input type="submit" value="login">
+<html class="no-js css-menubar" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="eSports Management System">
+    <meta name="author" content="Ricardo Bos">
+    
+    <title>eSports Management System | Login</title>
+    
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap-extend.min.css">
+    <link rel="stylesheet" href="/stylesheets/site.min.css">
+    
+    <!-- Plugins -->
+    <link rel="stylesheet" href="/vendor/animsition/animsition.css">
+    <link rel="stylesheet" href="/vendor/asscrollable/asScrollable.css">
+    <link rel="stylesheet" href="/vendor/switchery/switchery.css">
+    <link rel="stylesheet" href="/vendor/intro-js/introjs.css">
+    <link rel="stylesheet" href="/vendor/slidepanel/slidePanel.css">
+    <link rel="stylesheet" href="/vendor/jquery-mmenu/jquery-mmenu.css">
+    <link rel="stylesheet" href="/vendor/flag-icon-css/flag-icon.css">
+    <link rel="stylesheet" href="/vendor/waves/waves.css">
+    <link rel="stylesheet" href="/stylesheets/login-v3.css">
+    
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/fonts/material-design/material-design.min.css">
+    <link rel="stylesheet" href="/global/fonts/brand-icons/brand-icons.min.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+    
+    <!--[if lt IE 9]>
+    <script src="vendor/html5shiv/html5shiv.min.js"></script>
+    <![endif]-->
+    
+    <!--[if lt IE 10]>
+    <script src="global/vendor/media-match/media.match.min.js"></script>
+    <script src="global/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Scripts -->
+    <script src="/vendor/breakpoints/breakpoints.js"></script>
+    <script>
+      Breakpoints();
+    </script>
+  </head>
+
+  <body class="animsition page-login-v3 layout-full">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+
+<!-- Page -->
+    <div class="page vertical-align text-center" data-animsition-in="fade-in" data-animsition-out="fade-out">>
+      <div class="page-content vertical-align-middle">
+        <div class="panel">
+          <div class="panel-body">
+            <div class="brand">
+              <img class="brand-img" src="#" alt="logo">
+              <h2 class="brand-text font-size-18">Login</h2>
+            </div>
+            <form method="POST" action="/login">
+              <div class="form-group form-material floating" data-plugin="formMaterial">
+                <input type="text" class="form-control" name="username" />
+                <label class="floating-label">Username</label>
+              </div>
+              <div class="form-group form-material floating" data-plugin="formMaterial">
+                <input type="password" class="form-control" name="password" />
+                <label class="floating-label">Password</label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block btn-lg mt-40">Sign in</button>
             </form>
+          </div>
         </div>
-    </body>
+
+        <footer class="page-copyright page-copyright-inverse">
+          <p>WEBSITE BY <a href="http://ricardobos.com/" style="color: white;">Ricardo Bos</a></p>
+          <p>© Ricardo Bos 2018. All RIGHT RESERVED.</p>
+        </footer>
+      </div>
+    </div>
+    <!-- End Page -->
+    
+    
+    
+    
+    <!-- Core  -->
+    <script src="/vendor/babel-external-helpers/babel-external-helpers.js"></script>
+    <script src="/vendor/jquery/jquery.js"></script>
+    <script src="/vendor/popper-js/umd/popper.min.js"></script>
+    <script src="/vendor/bootstrap/bootstrap.js"></script>
+    <script src="/vendor/animsition/animsition.js"></script>
+    <script src="/vendor/mousewheel/jquery.mousewheel.js"></script>
+    <script src="/global/vendor/asscrollbar/jquery-asScrollbar.js"></script>
+    <script src="/global/vendor/asscrollable/jquery-asScrollable.js"></script>
+    <script src="/global/vendor/waves/waves.js"></script>
+    
+    <!-- Plugins -->
+    <script src="/vendor/jquery-mmenu/jquery.mmenu.min.all.js"></script>
+    <script src="/vendor/switchery/switchery.js"></script>
+    <script src="/vendor/intro-js/intro.js"></script>
+    <script src="/vendor/screenfull/screenfull.js"></script>
+    <script src="/vendor/slidepanel/jquery-slidePanel.js"></script>
+    <script src="/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+    
+    <!-- Scripts -->
+    <script src="/js/Component.js"></script>
+    <script src="/js/Plugin.js"></script>
+    <script src="/js/Base.js"></script>
+    <script src="/js/Config.js"></script>
+    
+    <script src="/js/Section/Menubar.js"></script>
+    <script src="/js/Section/Sidebar.js"></script>
+    <script src="/js/Section/PageAside.js"></script>
+    <script src="/js/Section/GridMenu.js"></script>
+    
+    <!-- Config -->
+    <script src="/js/config/colors.js"></script>
+    <script src="/js/config/tour.js"></script>
+    
+    <!-- Page -->
+    <script src="/js/Site.js"></script>
+    <script src="/js/Plugin/asscrollable.js"></script>
+    <script src="/js/Plugin/slidepanel.js"></script>
+    <script src="/js/Plugin/switchery.js"></script>
+    <script src="/js/Plugin/jquery-placeholder.js"></script>
+    <script src="/js/Plugin/material.js"></script>
+    
+    <script>
+      (function(document, window, $){
+        'use strict';
+    
+        var Site = window.Site;
+        $(document).ready(function(){
+          Site.run();
+        });
+      })(document, window, jQuery);
+    </script>
+    
+  </body>
 </html>
+
