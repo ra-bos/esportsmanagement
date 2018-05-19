@@ -31,7 +31,7 @@ var UserSchema = new mongoose.Schema({
     game: String,
     role: Number
 });
-
+// Test
 UserSchema.plugin(passportLocalMongoose);
 
 var User = mongoose.model("User", UserSchema);
