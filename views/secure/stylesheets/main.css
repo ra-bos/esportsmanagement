@@ -1,0 +1,31 @@
+body{
+    background: #EDEDED;
+}
+.container {
+    padding-top: 15px;
+    background-color:white;
+    -webkit-box-shadow: 0px 6px 17px -1px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 6px 17px -1px rgba(0,0,0,0.25);
+    box-shadow: 0px 6px 17px -1px rgba(0,0,0,0.25);
+}
+.navbar{
+    margin-bottom: 0;
+}
+.jumbotron{
+    background-image: linear-gradient(to right bottom, #6c05ae, #8634bf, #a054d0, #b872e1, #d090f2);
+    color: white;
+}
+h1{
+    margin-top: 0;
+}
+td a {
+    color: white;
+}
+td a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.thumbnail {
+    padding: 0;
+}

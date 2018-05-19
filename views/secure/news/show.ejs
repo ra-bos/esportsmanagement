@@ -1,0 +1,33 @@
+<% include ../../partials/header %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%=post.image %>">
+                <div class="caption">
+                    <h4><%=post.title%></h4>
+                    <h5>Created by: <%=post.author.username%> on <%=post.created.toDateString()%></h5>
+                    <h5><strong>Short Description:</strong></h5>
+                    <p><%- post.shortDesc %></p>
+                    <h5><strong>Long Description:</strong></h5>
+                    <p><%- post.longDesc %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="list-group">
+              <a href="#" class="list-group-item active">
+                <strong>Post title: </strong><%= post.title %>
+              </a>
+              <a href="#" class="list-group-item"><strong>Author: </strong><%= post.author.username %></a>
+              <a href="#" class="list-group-item"><strong>Created: </strong><%= post.created.toDateString() %></a>
+              <a href="#" class="list-group-item"><strong>Category: </strong>Not available yet</a>
+              <a href="#" class="list-group-item"><strong>Last edited: </strong>Not available yet</a>
+            </div>
+            <td><button type="button" class="btn btn-sm btn-primary"><a href="/secure/news/" style="color:white; text-decoration:none;">Go back</a></button></td>
+            <td><button type="button" class="btn btn-sm btn-primary"><a href="/secure/news/<%=post._id%>/edit" style="color:white; text-decoration:none;">Edit</a></button></td>
+            <td><form id="delete" action="/secure/news/<%=post._id%>?_method=DELETE" method="POST"><button class="btn btn-sm btn-danger">Remove</button></form></td>
+        </div>
+    </div>
+</div>
+<% include ../../partials/footer %>

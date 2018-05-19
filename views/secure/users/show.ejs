@@ -1,0 +1,63 @@
+<% include ../../partials/header %>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-sm-10">
+             <h1 class=""><%=user.firstName%> <%=user.lastName%></h1>
+             <h6><i><%=user.job%></i></h6>
+          <button type="button" class="btn btn-default"><a href="/secure/users" style="text-decoration: none; color: black;">Go Back!</a></button>
+          <button type="button" class="btn btn-success"><a href="/secure/users/<%=user._id%>/edit" style="text-decoration: none; color:white;">Edit</a></button>
+          <form id="delete" action="/secure/users/<%=user._id%>?_method=DELETE" method="POST" style="display: inline;"><button class="btn btn-danger">Remove</button></form>
+        </div>
+      <div class="col-sm-2"><img title="profile image" class="img-circle img-responsive pull-right" src="<%=user.avatar%>">
+
+        </div>
+    </div>
+    <hr>
+  <br>
+    <div class="row">
+        <div class="col-sm-3">
+            <!--left col-->
+            <ul class="list-group">
+                <li class="list-group-item text-muted" contenteditable="false">Info</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Created</strong></span> <%= user.created.toDateString() %></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Username</strong></span> <%= user.username %></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Real name</strong></span> <%=user.firstName%> <%=user.lastName%></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Date of Birth</strong></span> <%=user.birth.toDateString() %></li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong class="">Job:</strong></span> <%=user.job%></li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong class="">eSports Player:</strong></span> <%=user.player%></li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong class="">Role:</strong></span> <%=user.role%></li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email:</strong></span> <%=user.email%></li>
+            </ul>
+           <div class="panel panel-default">
+             <div class="panel-heading">Life quote
+
+                </div>
+                <div class="panel-body"><i style="color:green" class="fa fa-check-square"></i> Haast je wanneer je tijd hebt, dan heb je tijd wanneer je moet haasten
+
+                </div>
+            </div>
+          
+            <div class="panel panel-default">
+                <div class="panel-heading">Social Media</div>
+                <div class="panel-body">
+                    Social media here
+                </div>
+            </div>
+        </div>
+        <!--/col-3-->
+        <div class="col-sm-9" style="" contenteditable="false">
+            <div class="panel panel-default">
+                <div class="panel-heading"><%=user.firstName%>'s Bio</div>
+                <div class="panel-body"> A long description about me.
+
+                </div>
+            </div>
+
+</div></div>
+
+
+            <div id="push"></div>
+        </div>
+
+<% include ../../partials/footer %>

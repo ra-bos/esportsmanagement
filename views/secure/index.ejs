@@ -1,0 +1,73 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3 class="panel-title">Warning!</h3>
+        </div>
+        <div class="panel-body">
+            Some menu items are currently disabled! The ones that are disabled are currently being developed. <br>
+            Thanks, <strong>Development Team Tulip eSports</strong>
+        </div>
+    </div>
+        <div class="jumbotron">
+            <h1>Welcome, <%= currentUser.username %></h1>
+            <p>Are you ready to manage Tulip eSports?</p>
+            <p><a class="btn btn-default btn-lg" href="#" role="button">Let's go!</a></p>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">News</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li><a href="/secure/news">Show All</a></li>
+                            <li><a href="/secure/news/new">Create new post</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Tournaments</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li class="disabled"><a href="#">Show All</a></li>
+                            <li class="disabled"><a href="#">Create new tournament</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Teams</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li class="disabled"><a href="#">Show All</a></li>
+                            <li class="disabled"><a href="#">Create new team</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Users</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li><a href="/secure/users">Show All</a></li>
+                            <li><a href="/secure/users/new">Create new employee</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<% include ../partials/footer %>

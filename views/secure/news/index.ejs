@@ -1,0 +1,57 @@
+<% include ../../partials/header %>
+
+<div class="container">
+    <h1>News</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+             <!-- Default panel contents -->
+                <div class="panel-heading">
+                    News <span class="badge"><%= post.length %></span>
+                    <span style="float: right;"><button class="btn btn-xs btn-primary"><a href="/secure/news/new">Add post</a></button></span>
+                </div>
+              <!-- Table -->
+            <table class="table">
+                <thead>
+                    <tr>
+                          <th>#</th>
+                          <th>Author</th>
+                          <th>Date</th>
+                          <th>Title</th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <% post.forEach(function(post){ %>
+                      <tr>
+                          <th scope="row"><%= post._id %></th>
+                          <td><%= post.author.username %></td>
+                          <td><%= post.created.toDateString() %></td>
+                          <td><%= post.title %></td>
+                          <td><button type="button" class="btn btn-sm btn-primary"><a href="/secure/news/<%=post._id%>">Show</a></button></td>
+                          <td><button type="button" class="btn btn-sm btn-primary"><a href="/secure/news/<%=post._id%>/edit">Edit</a></button></td>
+                          <td><form id="delete" action="/secure/news/<%=post._id%>?_method=DELETE" method="POST"><button class="btn btn-sm btn-danger">Remove</button></form></td>
+                      </tr>
+                      <% }); %>
+                  </tbody>
+              </table>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Warning!</h3>
+                </div>
+                <div class="panel-body">
+                    All changes will have impact on the main site! <br>
+                    Do <strong>NOT</strong> change anything unless you have to.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<% include ../../partials/footer %>
