@@ -2,11 +2,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <div class="thumbnail">
-                <img class="img-responsive" src="<%=post.image %>">
-                <div class="caption">
+            <div class="card">
+                <img class="card-img-top" src="<%=post.image %>">
+                <div class="card-body">
                     <h4><%=post.title%></h4>
-                    <h5>Created by: <%=post.author.username%> on <%=post.created.toDateString()%></h5>
+                    <label>Created by: <%=post.author.username%> on <%=post.created.toDateString()%></label>
                     <h5><strong>Short Description:</strong></h5>
                     <p><%- post.shortDesc %></p>
                     <h5><strong>Long Description:</strong></h5>
@@ -15,14 +15,16 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="list-group">
-              <a href="#" class="list-group-item active">
-                <strong>Post title: </strong><%= post.title %>
-              </a>
-              <a href="#" class="list-group-item"><strong>Author: </strong><%= post.author.username %></a>
-              <a href="#" class="list-group-item"><strong>Created: </strong><%= post.created.toDateString() %></a>
-              <a href="#" class="list-group-item"><strong>Category: </strong>Not available yet</a>
-              <a href="#" class="list-group-item"><strong>Last edited: </strong>Not available yet</a>
+            <div class="card">
+                <div class="card-header">
+                        <strong>Post title: </strong><%= post.title %>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item black"><strong>Author: </strong><%= post.author.username %></li>
+                    <li class="list-group-item black"><strong>Created: </strong><%= post.created.toDateString() %></li>
+                    <li class="list-group-item black"><strong>Category: </strong>Not available yet</li>
+                    <li class="list-group-item black"><strong>Last edited: </strong>Not available yet</li>
+                </ul>
             </div>
             <td><button type="button" class="btn btn-sm btn-primary"><a href="/secure/news/" style="color:white; text-decoration:none;">Go back</a></button></td>
             <td><button type="button" class="btn btn-sm btn-primary"><a href="/secure/news/<%=post._id%>/edit" style="color:white; text-decoration:none;">Edit</a></button></td>

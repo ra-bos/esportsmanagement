@@ -1,6 +1,9 @@
 body{
-    background: #343a40;
-    color: white;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /*color: white;*/
+    font-family: 'Lato', sans-serif;
 }
 
 .container {
@@ -8,8 +11,9 @@ body{
 }
 
 .card {
-    background: #565C63;
+    /*background: #565C63;*/
     border-radius: 0.286rem;
+    border: none;
 }
 .userInfo img{
     text-align: center;
@@ -25,7 +29,7 @@ small{
 }
 
 .category{
-    color: #848C94;
+    /*color: #848C94;*/
     text-transform: uppercase;
 }
 
@@ -37,16 +41,7 @@ small{
 .menu-top {
     margin-top: 20px;
 }
-ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-}
 
-li {
-    padding-top: 2px;
-    padding-bottom:2px;
-}
 
 .menu a {
     color: #AFB5BA;
@@ -54,6 +49,6 @@ li {
     text-transform: uppercase;
 }
 
-.bg-dark {
-    background-color: #696d72!important;
+.black {
+    color: black;
 }

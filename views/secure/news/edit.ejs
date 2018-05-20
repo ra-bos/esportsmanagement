@@ -1,30 +1,53 @@
 <% include ../../partials/header %>
 
 <div class="container">
-    <div class="row">
-        <div>
-            <td><button type="button" class="btn btn-sm btn-primary"><a href="/secure/news/" style="color:white; text-decoration:none;">Go back</a></button></td>
-            <h1>Edit: <%=post.title%></h1>
+    <div class="card">
+        <div class="card-header">
+            <h2 style="float: left;">Edit: <%=post.title%></h2>
+            <a href="/secure/news" class="btn btn-outline-dark" style="float: right;">Go back</a>
         </div>
-        <div>
-            <form action="/secure/news/<%= post._id %>?_method=PUT" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" value="<%=post.title%>" name="post[title]">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="/secure/news/<%=post._id%>?_method=PUT" method="POST">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" value="<%=post.title%>" name="post[title]" class="form-control">
+                            <small class="form-text text-muted">Edit the title of the post</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Image URL</label>
+                            <input type="text" value="<%=post.image%>" name="post[image]" class="form-control">
+                            <small class="form-text text-muted">Edit the image of the post</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Short Description</label>
+                            <input type="text" value="<%=post.shortDesc%>" name="post[shortDesc]" class="form-control">
+                            <small class="form-text text-muted">Edit the short description of the post</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Long Description</label>
+                            <textarea class="form-control" name="post[longDesc]" rows="3"><%=post.longDesc%></textarea>
+                            <small class="form-text text-muted">Edit the long description of the post</small>
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark">Submit</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" value="<%=post.image%>" name="post[image]">
+                <div class="col-md-6">
+                    <h4><strong>Original post</strong></h4>
+                    <div class="card" style="border: 1px solid rgba(0, 0, 0, 0.1);">
+                        <img class="card-img-top" src="<%=post.image %>">
+                        <div class="card-body">
+                            <h4><%=post.title%></h4>
+                            <label>Created by: <%=post.author.username%> on <%=post.created.toDateString()%></label>
+                            <h5><strong>Short Description:</strong></h5>
+                            <p><%- post.shortDesc %></p>
+                            <h5><strong>Long Description:</strong></h5>
+                            <p><%- post.longDesc %></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" value="<%=post.shortDesc%>" name="post[shortDesc]">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" value="<%=post.longDesc%>" name="post[longDesc]">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-                </div>
-            </form>
-            
+            </div>
         </div>
     </div>
 </div>

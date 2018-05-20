@@ -1,33 +1,39 @@
 <% include ../../partials/header %>
 
 <div class="container">
-    <div class="row">
-        <div>
-            <button type="button" class="btn btn-sm btn-primary"><a href="/secure/news/" style="color:white; text-decoration:none;">Go back</a></button>
-            <h2>Add new post</h2>
+    <div class="card" style="width: 600px; margin: auto;">
+        <div class="card-header">
+            <h2 style="float: left;">Add new post</h2>
+            <a href="/secure/news" class="btn btn-outline-dark" style="float: right;">Go back</a>
         </div>
-        <div>
-            <form action="/secure/news" method="POST">
-                <div class="form-group">
-                    <span><strong>Title:</strong></span>
-                    <input class="form-control" type="text" placeholder="Title" name="title">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="/secure/news" method="POST">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" placeholder="Title" name="post[title]" class="form-control">
+                            <small class="form-text text-muted">Make it cute, you can do that!</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Image URL</label>
+                            <input type="text" placeholder="Image URL" name="post[image]" class="form-control">
+                            <small class="form-text text-muted">No puppies, please... <i>They are too cute</i></small>
+                        </div>
+                        <div class="form-group">
+                            <label>Short Description</label>
+                            <textarea class="form-control" name="post[shortDesc]" rows="2"></textarea>
+                            <small class="form-text text-muted">Describe me in a few words..</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Long Description</label>
+                            <textarea class="form-control" name="post[longDesc]" rows="4"></textarea>
+                            <small class="form-text text-muted">Go big or Go Home!</small>
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark">Submit</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <span><strong>Image URL:</strong></span>
-                    <input class="form-control" type="text" placeholder="Image URL" name="image">
-                </div>
-                <div class="form-group">
-                    <span><strong>Short Description:</strong></span>
-                    <textarea  class="form-control" rows="3" name="shortDesc"></textarea>
-                </div>
-                <div class="form-group">
-                    <span><strong>Long Description:</strong></span>
-                    <textarea  class="form-control" rows="5" name="longDesc"></textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Post!</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
