@@ -1,42 +1,36 @@
 <% include partials/header %>
 
-  <body class="animsition page-login-v3 layout-full">
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-
-
-<!-- Page -->
-    <div class="page vertical-align text-center" data-animsition-in="fade-in" data-animsition-out="fade-out">>
-      <div class="page-content vertical-align-middle">
+<section class="h-100">
+  <header class="container h-100">
+    <div class="d-flex align-items-center justify-content-center h-100">
+      <div class="d-flex flex-column">
         <div class="panel">
           <div class="panel-body">
-            <div class="brand">
-              <img class="brand-img" src="https://png.icons8.com/ios/1600/small-business.png" style="height:50px;" alt="logo">
-              <h2 class="brand-text font-size-18">Login</h2>
+            <div class="branding">
+              <img src="https://www.freelogodesign.org/img/logo-ex-6.png" class="rounded mx-auto d-block" alt="Logo">
             </div>
-            <form method="POST" action="/login">
-              <div class="form-group form-material floating" data-plugin="formMaterial">
-                <input type="text" class="form-control" name="username" />
-                <label class="floating-label">Username</label>
-              </div>
-              <div class="form-group form-material floating" data-plugin="formMaterial">
-                <input type="password" class="form-control" name="password" />
-                <label class="floating-label">Password</label>
-              </div>
-              <button type="submit" class="btn btn-primary btn-block btn-lg mt-40">Sign in</button>
+            <form action="/login" method="POST">
+                <div class="form-group">
+                  <label>Username</label>
+                  <input type="text" class="form-control" name="username" placeholder="Enter username">
+                  <small class="form-text text-muted">This is <strong>not</strong> equal to your first name.</small>
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
             </form>
+            <small id="emailHelp" class="form-text text-muted">If you have trouble login in, please contact <a href="mailto:ricardo@ricardobos.com">Ricardo Bos</a>.</small>
           </div>
+          
         </div>
-
-        <footer class="page-copyright page-copyright-inverse">
-          <p>WEBSITE BY <a href="http://ricardobos.com/" style="color: white;">Ricardo Bos</a></p>
-          <p>© Ricardo Bos 2018. All RIGHT RESERVED.</p>
-        </footer>
       </div>
     </div>
-    <!-- End Page -->
-    
-    
+  </header>
+</section>
+<div class="copyright">
+  <p>A Website By <a href="mailto:ricardo@ricardobos.com">RICARDO BOS</a></p>
+</div>
+
 <% include partials/footer %>
