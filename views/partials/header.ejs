@@ -7,8 +7,63 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/landing.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/main.css">
 
     <title>eSports Management Solution</title>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/secure"><i class="far fa-building"></i> Company Name</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">News</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled">Tournaments</a>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link disabled">Teams</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/secure/players">Team Players</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/secure/users">Employees</a>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle disabled" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Control Panel
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item disabled">Company</a>
+            <a class="dropdown-item disabled">Logs</a>
+            <a class="dropdown-item disabled">Website</a>
+          </div>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%=currentUser.firstName%>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/secure/users/<%=currentUser._id%>">Profile</a>
+            <a class="dropdown-item" href="/secure/users/<%=currentUser._id%>/edit">Edit</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout">Log out</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Log out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
