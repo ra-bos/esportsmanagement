@@ -310,7 +310,7 @@ app.delete("/secure/users/:id", isLoggedIn, function(req, res){
 
 // Player route
 
-app.get("/secure/players", function(req, res){
+app.get("/secure/players", isLoggedIn, function(req, res){
     User.find({"player": true}).sort({created: -1}).exec(function(err, user){
         if(err){
             console.log(err);
