@@ -1,58 +1,97 @@
 <% include ../../partials/header %>
 
 <div class="container">
-    <div class="row">
-        <div>
-            <td><button type="button" class="btn btn-sm btn-primary"><a href="/secure/users/" style="color:white; text-decoration:none;">Go back</a></button></td>
-            <h1>Edit: <%=user.username%></h1>
+    <div class="card">
+        <div class="card-header">
+            <h2 style="float: left;">Edit: <%=user.username%></h2>
+            <a href="/secure/users/" class="btn btn-sm btn-outline-dark" style="float: right;">Go Back</a>
         </div>
-        <div>
-            <form action="/secure/users/<%= user._id %>?_method=PUT" method="POST">
-                <div class="form-group">
-                    <span><strong>Username</strong></span>
-                    <input class="form-control" type="text" value="<%=user.username%>" name="user[username]" disabled>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <% if(user.role === 0){ %>
+                        <div class="alert alert-danger" role="alert">
+                            <%=user.firstName%> is currently banned/inactive. %>
+                        </div>
+                    <% } %>
+                    <form action="/secure/users/<%= user._id %>?_method=PUT" method="POST">
+                        <div class="form-group row">
+                            <label for="username" class="col-sm-2 col-form-label">Username</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=user.username%>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputFirstName" value="<%=user.firstName%>" name="user[firstName]">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputLastName" value="<%=user.lastName%>" name="user[lastName]">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputAvatar" class="col-sm-2 col-form-label">Avatar URL</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputAvatar" value="<%=user.avatar%>" name="user[avatar]">
+                                <small class="form-text text-muted">Use an URL to an image!</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputDOB" class="col-sm-2 col-form-label">Date of Birth</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputDOB" value="<%=user.birth.toDateString()%>" name="user[birth]">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputEmail" value="<%=user.email%>" name="user[email]">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputJob" class="col-sm-2 col-form-label">Job</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="user[job]">
+                                    <option disabled selected>Current: <%=user.job%></option>
+                                    <option value="Customer Service">Customer Service</option>
+                                    <option value="eSports Coach">eSports Coach</option>
+                                    <option value="eSports Player">eSports Player</option>
+                                    <option value="Developer">Developer</option>
+                                    <option value="Executive Assistant">Executive Assistant</option>
+                                    <option value="Management">Management</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputRole" class="col-sm-2 col-form-label">Role</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="user[role]">
+                                    <% if(user.role === 0){ %>
+                                        <option disabled selected>Current: <strong><span style="color: red;">Banned/Inactive</span></strong></option>
+                                    <% } else if(user.role === 1){ %>
+                                        <option disabled selected>Current: eSports Player</option>
+                                    <% } else if(user.role === 2){ %>
+                                        <option disabled selected>Current: Employee</option>
+                                    <% } else if(user.role === 3){ %>
+                                        <option disabled selected>Current: Management</option>
+                                    <% } else { %>
+                                        <option disabled selected>Current: No job found!</option>
+                                    <% }; %>
+                                    <option value="0">Banned/inactive</option>
+                                    <option value="1">eSports Player</option>
+                                    <option value="2">Employee</option>
+                                    <option value="3">Management</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark">Submit</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <span><strong>First Name</strong></span>
-                    <input class="form-control" type="text" value="<%=user.firstName%>" name="user[firstName]">
-                </div>
-                <div class="form-group">
-                    <span><strong>Last Name</strong></span>
-                    <input class="form-control" type="text" value="<%=user.lastName%>" name="user[lastName]">
-                </div>
-                <div class="form-group">
-                    <span><strong>Avatar</strong></span>
-                    <input class="form-control" type="text" value="<%=user.avatar%>" name="user[avatar]">
-                </div>
-                <div class="form-group">
-                    <span><strong>Date of Birth</strong></span>
-                    <input class="form-control" type="text" value="<%=user.birth%>" name="user[birth]">
-                </div>
-                <div class="form-group">
-                    <span><strong>Email</strong></span>
-                    <input class="form-control" type="text" value="<%=user.email%>" name="user[email]">
-                </div>
-                <div class="form-group">
-                    <span><strong>Job</strong></span>
-                    <input class="form-control" type="text" value="<%=user.job%>" name="user[job]">
-                </div>
-                <div class="form-group">
-                    <span><strong>eSports Player</strong></span>
-                    <select class="form-control form-control-sm" name="user[player]">
-                        <option disabled selected>Currently: <%=user.player%></option>
-                        <option value="true">True</option>
-                        <option value="false">False</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <span><strong>Role</strong></span>
-                    <input class="form-control" type="number" min="0" max="3" value="<%=user.role%>" name="user[role]">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-                </div>
-            </form>
-            
+            </div>
         </div>
     </div>
 </div>

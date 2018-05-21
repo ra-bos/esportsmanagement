@@ -1,37 +1,27 @@
 <% include ../../partials/header %>
 
 <div class="container">
-    <h3>Add new employee</h3>
-    <div class="row">
-        <div class="col-md-8">
-            <form action="/secure/users" method="POST">
-                <div class="form-group">
-                    <span><strong>Username:</strong></span>
-                    <input class="form-control" type="text" placeholder="Username" name="username">
-                </div>
-                <div class="form-group">
-                    <span><strong>Password:</strong></span>
-                    <input class="form-control" type="password" placeholder="Password" name="password">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-default">Next Step!</button>
-                </div>
-            </form>
+    <div class="card" style="width: 400px; margin: auto;">
+        <div class="card-header">
+            <h2 style="float: left;">Add new employee</h2>
+            <a href="/secure/users/" class="btn btn-sm btn-outline-dark" style="float: right;">Go Back</a>  
         </div>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <strong>
-                        User roles
-                    </strong>
-                </div>
-                <div class="panel-body">
-                    <p>
-                        <strong>0</strong> Banned/Not activated <br>
-                        <strong>1</strong> eSports Team Player <br>
-                        <strong>2</strong> Tulip eSports Employee <br>
-                        <strong>3</strong> Tulip eSports Developer
-                    </p>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="secure/users" method="POST">
+                        <div class="form-group">
+                            <label>Username:</label>
+                            <input type="text" placeholder="Username" name="username" class="form-control">
+                            <small class="form-text text-muted">Do <strong>not</strong> use first name!</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" placeholder="Password" name="password" class="form-control">
+                            <small class="form-text text-muted">User can <strong>not </strong>change this yet!</small>
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark">Next step!</button>
+                    </form>
                 </div>
             </div>
         </div>
