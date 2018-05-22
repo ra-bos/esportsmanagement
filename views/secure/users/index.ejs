@@ -17,7 +17,6 @@
                           <th>Date of Birth</th>
                           <th>Role</th>
                           <th>Job</th>
-                          <th>Email</th>
                           <th></th>
                           <th></th>
                           <th></th>
@@ -32,7 +31,6 @@
                           <td><%= user.birth.toDateString() %></td>
                           <td><%= user.role %></td>
                           <td><%= user.job %></td>
-                          <td><%= user.email %></td>
                           <td><a class="btn btn-sm btn-outline-dark" href="/secure/users/<%=user._id%>">Show</a></td>
                           <td><a class="btn btn-sm btn-outline-dark" href="/secure/users/<%=user._id%>/edit">Edit</a></td>
                           <td><form id="delete" action="/secure/users/<%=user._id%>?_method=DELETE" method="POST"><button class="btn btn-sm btn-danger">Remove</button></form></td>

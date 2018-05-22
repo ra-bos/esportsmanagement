@@ -238,7 +238,9 @@ app.delete("/secure/news/:id", isLoggedIn, function(req, res){
 
 // All users
 app.get("/secure/users", isLoggedIn, function(req, res){
-    User.find().sort({created: -1}).exec(function(err, user){
+    User.find({
+        role: { $ne: 1}
+    }).sort({created: -1}).exec(function(err, user){
         if(err){
             console.log(err);
         } else {
@@ -322,7 +324,7 @@ app.delete("/secure/users/:id", isLoggedIn, function(req, res){
 // Player route
 
 app.get("/secure/players", isLoggedIn, function(req, res){
-    User.find({"player": true}).sort({created: -1}).exec(function(err, user){
+    User.find({"role": 1}).sort({created: -1}).exec(function(err, user){
         if(err){
             console.log(err);
         } else {
