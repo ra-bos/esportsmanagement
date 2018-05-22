@@ -24,39 +24,43 @@
                         <div class="form-group row">
                             <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputFirstName" value="<%=user.firstName%>" name="user[firstName]">
+                                <input type="text" class="form-control" id="inputFirstName" value="<%=user.firstName%>" name="user[firstName]" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputLastName" value="<%=user.lastName%>" name="user[lastName]">
+                                <input type="text" class="form-control" id="inputLastName" value="<%=user.lastName%>" name="user[lastName]" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputAvatar" class="col-sm-2 col-form-label">Avatar URL</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputAvatar" value="<%=user.avatar%>" name="user[avatar]">
+                                <input type="text" class="form-control" id="inputAvatar" value="<%=user.avatar%>" name="user[avatar]" required>
                                 <small class="form-text text-muted">Use an URL to an image!</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputDOB" class="col-sm-2 col-form-label">Date of Birth</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputDOB" value="<%=user.birth.toDateString()%>" name="user[birth]">
+                                <input type="text" class="form-control" id="inputDOB" value="<%=user.birth.toDateString()%>" name="user[birth]" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputEmail" value="<%=user.email%>" name="user[email]">
+                                <input type="text" class="form-control" id="inputEmail" value="<%=user.email%>" name="user[email]" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputJob" class="col-sm-2 col-form-label">Job</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="user[job]">
-                                    <option disabled selected>Current: <%=user.job%></option>
+                                <select class="form-control" name="user[job]" required>
+                                    <% if(user.job === undefined) { %>
+                                        <option disabled>Current: No job found!</option>
+                                    <% } else { %>
+                                        <option disabled>Current: <%= user.job %></option>
+                                    <% } %>
                                     <option value="Customer Service">Customer Service</option>
                                     <option value="eSports Coach">eSports Coach</option>
                                     <option value="eSports Player">eSports Player</option>
@@ -69,9 +73,9 @@
                         <div class="form-group row">
                             <label for="inputRole" class="col-sm-2 col-form-label">Role</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="user[role]">
+                                <select class="form-control" name="user[role]" required>
                                     <% if(user.role === 0){ %>
-                                        <option disabled selected>Current: <strong><span style="color: red;">Banned/Inactive</span></strong></option>
+                                        <option disabled>Current: <strong><span style="color: red;">Banned/Inactive</span></strong></option>
                                     <% } else if(user.role === 1){ %>
                                         <option disabled selected>Current: eSports Player</option>
                                     <% } else if(user.role === 2){ %>
@@ -79,7 +83,7 @@
                                     <% } else if(user.role === 3){ %>
                                         <option disabled selected>Current: Management</option>
                                     <% } else { %>
-                                        <option disabled selected>Current: No job found!</option>
+                                        <option disabled selected>User has no role yet!</option>
                                     <% }; %>
                                     <option value="0">Banned/inactive</option>
                                     <option value="1">eSports Player</option>

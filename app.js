@@ -238,7 +238,7 @@ app.delete("/secure/news/:id", isLoggedIn, function(req, res){
 
 // All users
 app.get("/secure/users", isLoggedIn, function(req, res){
-    User.find({"player": false}).sort({created: -1}).exec(function(err, user){
+    User.find().sort({created: -1}).exec(function(err, user){
         if(err){
             console.log(err);
         } else {
@@ -251,6 +251,17 @@ app.get("/secure/users", isLoggedIn, function(req, res){
 app.get("/secure/users/new", isLoggedIn, function(req, res){
     res.render("secure/users/new");
 });
+
+app.get("/secure/users/new/step2/:id", isLoggedIn, function(req, res){
+    User.findById(req.params.id, function(err, user){
+        if(err || !user){
+            res.redirect("/secure/users/");
+        } else {
+            res.render("secure/users/final", {user: user});
+        }
+    });
+});
+
 // Add new user
 app.post("/secure/users", isLoggedIn, function(req, res){
     var newUser = new User({username: req.body.username});
@@ -258,7 +269,7 @@ app.post("/secure/users", isLoggedIn, function(req, res){
         if(err){
             console.log(err);
         }
-        res.redirect("/secure/users/" + user._id + "/edit");
+        res.redirect("/secure/users/new/step2/" + user._id);
         });
 });
 

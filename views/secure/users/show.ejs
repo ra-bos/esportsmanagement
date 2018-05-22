@@ -1,63 +1,80 @@
 <% include ../../partials/header %>
 <div class="container">
     
-    <div class="row">
-        <div class="col-sm-10">
-             <h1 class=""><%=user.firstName%> <%=user.lastName%></h1>
-             <h6><i><%=user.job%></i></h6>
-          <button type="button" class="btn btn-default"><a href="/secure/users" style="text-decoration: none; color: black;">Go Back!</a></button>
-          <button type="button" class="btn btn-success"><a href="/secure/users/<%=user._id%>/edit" style="text-decoration: none; color:white;">Edit</a></button>
-          <form id="delete" action="/secure/users/<%=user._id%>?_method=DELETE" method="POST" style="display: inline;"><button class="btn btn-danger">Remove</button></form>
-        </div>
-      <div class="col-sm-2"><img title="profile image" class="img-circle img-responsive pull-right" src="<%=user.avatar%>">
-
+    <div class="card">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="container no-margin">
+                    <h1 class="no-margin"><%=user.firstName%> <%=user.lastName%></h1>
+                    <% if(user.role === 0){ %>
+                        <small class="text-form" style="color: red;"><strong>This user is currently inactive</strong></small>
+                    <% } else { %>
+                        <small class="text-form text-muted">Position: <%=user.job%></small>
+                        <hr>
+                        <a href="/secure/users" class="btn btn-outline-dark">Go Back</a>
+                        <a href="/secure/users/<%=user._id%>/edit" class="btn btn-outline-dark">Edit</a>
+                    <% } %>
+                    <% if(currentUser.role === 3 && user.role === 0) { %>
+                        <hr>
+                        <a href="/secure/users" class="btn btn-outline-dark">Go Back</a>
+                        <a href="/secure/users/<%=user._id%>/edit" class="btn btn-outline-dark">Edit</a>
+                    <% } %>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="container no-margin">
+                    <img class="imgAvatar" src="<%=user.avatar%>">
+                </div>
+            </div>
         </div>
     </div>
-    <hr>
   <br>
-    <div class="row">
-        <div class="col-sm-3">
-            <!--left col-->
-            <ul class="list-group">
-                <li class="list-group-item text-muted" contenteditable="false">Info</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Created</strong></span> <%= user.created.toDateString() %></li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Username</strong></span> <%= user.username %></li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Real name</strong></span> <%=user.firstName%> <%=user.lastName%></li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Date of Birth</strong></span> <%=user.birth.toDateString() %></li>
-              <li class="list-group-item text-right"><span class="pull-left"><strong class="">Job:</strong></span> <%=user.job%></li>
-              <li class="list-group-item text-right"><span class="pull-left"><strong class="">eSports Player:</strong></span> <%=user.player%></li>
-              <li class="list-group-item text-right"><span class="pull-left"><strong class="">Role:</strong></span> <%=user.role%></li>
-              <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email:</strong></span> <%=user.email%></li>
-            </ul>
-           <div class="panel panel-default">
-             <div class="panel-heading">Life quote
-
-                </div>
-                <div class="panel-body"><i style="color:green" class="fa fa-check-square"></i> Haast je wanneer je tijd hebt, dan heb je tijd wanneer je moet haasten
-
-                </div>
-            </div>
-          
-            <div class="panel panel-default">
-                <div class="panel-heading">Social Media</div>
-                <div class="panel-body">
-                    Social media here
-                </div>
-            </div>
-        </div>
-        <!--/col-3-->
-        <div class="col-sm-9" style="" contenteditable="false">
-            <div class="panel panel-default">
-                <div class="panel-heading"><%=user.firstName%>'s Bio</div>
-                <div class="panel-body"> A long description about me.
-
-                </div>
-            </div>
-
-</div></div>
-
-
-            <div id="push"></div>
-        </div>
-
+  <div class="row">
+      <div class="col-md-4">
+          <div class="card">
+              <div class="card-header">
+                  <strong>General Information</strong>
+              </div>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong>Created:</strong> <span class="userfloatRight"><%=user.created.toDateString()%></span> </li>
+                  <li class="list-group-item"><strong>Username:</strong> <span class="userfloatRight"><%=user.username%></span></li>
+                  <li class="list-group-item"><strong>Full Name:</strong> <span class="userfloatRight"><%=user.firstName%> <%=user.lastName%></span></li>
+                  <li class="list-group-item"><strong>Email:</strong>  <span class="userfloatRight"><%=user.email%></span></li>
+                  <li class="list-group-item"><strong>Date of Birth:</strong>  <span class="userfloatRight"><%=user.birth.toDateString()%></span></li>
+                  <li class="list-group-item"><strong>Department:</strong>  <span class="userfloatRight"></span></li>
+                  <li class="list-group-item"><strong>Job:</strong>  <span class="userfloatRight"><%=user.job%></span></li>
+                  <li class="list-group-item"><strong>Role:</strong>  <span class="userfloatRight"><%=user.role%></span></li>
+                  <li class="list-group-item"><strong>eSports Player:</strong>  <span class="userfloatRight"><%=user.player%></span></li>
+              </ul>
+          </div>
+          <br>
+          <div class="card">
+              <div class="card-header">
+                  <strong>Life Quote</strong>
+              </div>
+              <div class="card-body">
+                  Quote goes here..
+              </div>
+          </div>
+      </div>
+      <div class="col-md-8">
+          <div class="card">
+              <div class="card-header">
+                  <strong>Bio</strong>
+              </div>
+              <div class="card-body">
+                  Bio about person goes here..
+              </div>
+          </div>
+          <br>
+          <div class="card">
+              <div class="card-header">
+                  <strong><%=user.firstName%>'s Logs</strong>
+              </div>
+              <div class="card-body">
+                  All logs go here..
+              </div>
+          </div>
+      </div>
+  </div>
 <% include ../../partials/footer %>
