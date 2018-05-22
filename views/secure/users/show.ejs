@@ -44,9 +44,21 @@
                   <li class="list-group-item"><strong>Department:</strong>  <span class="userfloatRight"></span></li>
                   <li class="list-group-item"><strong>Job:</strong>  <span class="userfloatRight"><%=user.job%></span></li>
                   <li class="list-group-item"><strong>Role:</strong>  <span class="userfloatRight"><%=user.role%></span></li>
-                  <li class="list-group-item"><strong>eSports Player:</strong>  <span class="userfloatRight"><%=user.player%></span></li>
               </ul>
           </div>
+          <br>
+          <% if(user.role === 1){ %>
+          <div class="card">
+              <div class="card-header">
+                  <strong>eSports info</strong>
+              </div>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong>Game:</strong> <span class="userfloatRight">test</span></li>
+                  <li class="list-group-item"><strong>Position:</strong> <span class="userfloatRight">test</span></li>
+                  <li class="list-group-item"><strong>Team Leader:</strong> <span class="userfloatRight">test</span></li>
+              </ul>
+          </div>
+          <% } %>
           <br>
           <div class="card">
               <div class="card-header">

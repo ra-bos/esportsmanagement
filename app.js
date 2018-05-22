@@ -128,7 +128,7 @@ var Team = mongoose.model("Team", teamSchema);
 // Index
 app.get("/", function(req, res){
     if(req.isAuthenticated()){
-        res.redirect("secure")
+        res.redirect("/secure")
         return;
     }
     res.render("landing")
@@ -247,11 +247,12 @@ app.get("/secure/users", isLoggedIn, function(req, res){
     });
 });
 
-// New User
+// New User Step 1
 app.get("/secure/users/new", isLoggedIn, function(req, res){
     res.render("secure/users/new");
 });
 
+//  New User Step 2
 app.get("/secure/users/new/step2/:id", isLoggedIn, function(req, res){
     User.findById(req.params.id, function(err, user){
         if(err || !user){
