@@ -1,0 +1,87 @@
+<% include ../../partials/header %>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2 style="float: left;">Last step for: <%=user.username%></h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <% if(user.role === 0){ %>
+                        <div class="alert alert-danger" role="alert">
+                            <%=user.firstName%> is currently banned/inactive. %>
+                        </div>
+                    <% } %>
+                    <form action="/secure/users/<%= user._id %>?_method=PUT" method="POST">
+                        <div class="form-group row">
+                            <label for="username" class="col-sm-2 col-form-label">Username</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%=user.username%>" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" name="user[firstName]" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" name="user[lastName]" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputAvatar" class="col-sm-2 col-form-label">Avatar URL</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputAvatar" placeholder="http://...." name="user[avatar]" required>
+                                <small class="form-text text-muted">Use an URL to an image!</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputDOB" class="col-sm-2 col-form-label">Date of Birth</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputDOB" placeholder="MM/DD/YY" name="user[birth]" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputEmail" placeholder="name@companyname.com" name="user[email]" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputJob" class="col-sm-2 col-form-label">Job</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="user[job]" required>
+                                    <option disabled>Select job</option>
+                                    <option value="Customer Service">Customer Service</option>
+                                    <option value="eSports Coach">eSports Coach</option>
+                                    <option value="eSports Player">eSports Player</option>
+                                    <option value="Developer">Developer</option>
+                                    <option value="Executive Assistant">Executive Assistant</option>
+                                    <option value="Management">Management</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputRole" class="col-sm-2 col-form-label">Role</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="user[role]">
+                                    <option disabled>Select role</option>
+                                    <option value="0">Banned/inactive</option>
+                                    <option value="1">eSports Player</option>
+                                    <option value="2">Employee</option>
+                                    <option value="3">Management</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ../../partials/footer %>
