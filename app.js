@@ -238,9 +238,7 @@ app.delete("/secure/news/:id", isLoggedIn, function(req, res){
 
 // All users
 app.get("/secure/users", isLoggedIn, function(req, res){
-    User.find({
-        role: { $ne: 1}
-    }).sort({created: -1}).exec(function(err, user){
+    User.find({role: { $ne: 1}}).sort({created: -1}).exec(function(err, user){
         if(err){
             console.log(err);
         } else {
