@@ -53,13 +53,32 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="inputDepartment" class="col-sm-2 col-form-label">Department</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="user[department]" required>
+                                    <% if(user.department === undefined) { %>
+                                        <option disabled selected>Current: No department found!</option>
+                                    <% } else { %>
+                                        <option disabled selected>Current: <%= user.department %></option>
+                                    <% } %>
+                                    <option value="Customer Service">Marketing</option>
+                                    <option value="Web Development">Web Development</option>
+                                    <option value="Customer Service">Customer Service</option>
+                                    <option value="Customer Service">eSport</option>
+                                    <% if(currentUser.role === 3) { %>
+                                    <option value="Co-Founder">Co-Founder</option>
+                                    <% } %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="inputJob" class="col-sm-2 col-form-label">Job</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="user[job]" required>
                                     <% if(user.job === undefined) { %>
-                                        <option disabled>Current: No job found!</option>
+                                        <option disabled selected>Current: No job found!</option>
                                     <% } else { %>
-                                        <option disabled>Current: <%= user.job %></option>
+                                        <option disabled selected>Current: <%= user.job %></option>
                                     <% } %>
                                     <option value="Customer Service">Customer Service</option>
                                     <option value="eSports Coach">eSports Coach</option>

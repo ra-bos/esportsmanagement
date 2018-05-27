@@ -25,6 +25,7 @@ var UserSchema = new mongoose.Schema({
     lastName: String,
     birth: Date,
     email: String,
+    department: String,
     job: String,
     team: String,
     player: Boolean,

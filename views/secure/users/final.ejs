@@ -52,6 +52,21 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="inputDepartment" class="col-sm-2 col-form-label">Department</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="user[department]" required>
+                                    <option disabled>Select department</option>
+                                    <option value="Customer Service">Marketing</option>
+                                    <option value="Web Development">Web Development</option>
+                                    <option value="Customer Service">Customer Service</option>
+                                    <option value="Customer Service">eSport</option>
+                                    <% if(currentUser.role === 3) { %>
+                                    <option value="Co-Founder">Co-Founder</option>
+                                    <% } %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="inputJob" class="col-sm-2 col-form-label">Job</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="user[job]" required>
