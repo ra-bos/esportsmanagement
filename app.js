@@ -342,7 +342,11 @@ app.get("*", function(req, res){
 
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
-        return next();
+        if(req.user.role === 0) {
+            return res.render("inactive")
+        } else {
+            return next();
+        }
     }
     res.redirect("/");
 };
