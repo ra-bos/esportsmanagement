@@ -333,6 +333,9 @@ app.get("/secure/players", isLoggedIn, function(req, res){
     });
 });
 
+app.get("/secure/cp", isLoggedIn, function(req, res){
+    res.render("secure/cp")
+});
 
 app.get("*", function(req, res){
     res.send("This page does not exist! Please go back!")
