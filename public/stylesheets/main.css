@@ -70,3 +70,10 @@ small{
 .userfloatRight {
     float: right;
 }
+
+.avatar {
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-right: 4px;
+}
