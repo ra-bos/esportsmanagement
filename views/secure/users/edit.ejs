@@ -64,7 +64,7 @@
                                     <option value="Customer Service">Marketing</option>
                                     <option value="Web Development">Web Development</option>
                                     <option value="Customer Service">Customer Service</option>
-                                    <option value="Customer Service">eSport</option>
+                                    <option id="esportOption" value="eSport">eSport</option>
                                     <% if(currentUser.role === 3) { %>
                                     <option value="Co-Founder">Co-Founder</option>
                                     <% } %>
@@ -89,6 +89,54 @@
                                 </select>
                             </div>
                         </div>
+                        
+                        <!--If user is eSport show this-->
+                        <% if(user.department === "eSport") { %>
+                        <div class="form-group row">
+                            <label for="inputEsportGame" class="col-sm-2 col-form-label">eSports Game</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="user[game]" required>
+                                    <% if(user.game === undefined) { %>
+                                        <option disabled selected>Please add player to game!</option>
+                                    <% } else { %>
+                                        <option disabled selected>Current: <%= user.game %></option>
+                                    <% } %>
+                                    <option value="Fortnite">Fortnite</option>
+                                    <option value="League of Legends">League of Legends</option>
+                                    <option value="CSGO">CSGO</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEsportPosition" class="col-sm-2 col-form-label">eSports Position</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="user[gamePosition]" required>
+                                    <% if(user.gamePosition === undefined) { %>
+                                        <option disabled selected>Please add player to game position!</option>
+                                    <% } else { %>
+                                        <option disabled selected>Current: <%= user.gamePosition %></option>
+                                    <% } %>
+                                    <option value="Fortnite">Bottom</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEsportTeamLeader" class="col-sm-2 col-form-label">eSports Position</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="user[gameTeamLeader]" required>
+                                    <% if(user.gamePosition === undefined) { %>
+                                        <option disabled selected>Give player TL role or not!</option>
+                                    <% } else { %>
+                                        <option disabled selected>Current: <%= user.gameTeamLeader %></option>
+                                    <% } %>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <% } %>
+                        <!-- End if user is esport -->
+                        
                         <div class="form-group row">
                             <label for="inputRole" class="col-sm-2 col-form-label">Role</label>
                             <div class="col-sm-10">

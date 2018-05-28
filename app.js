@@ -27,9 +27,9 @@ var UserSchema = new mongoose.Schema({
     email: String,
     department: String,
     job: String,
-    team: String,
-    player: Boolean,
     game: String,
+    gamePosition: String,
+    gameTeamLeader: Boolean,
     role: Number
 });
 

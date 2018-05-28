@@ -9,7 +9,7 @@
                     <% if(user.role === 0){ %>
                         <small class="text-form" style="color: red;"><strong>This user is currently inactive</strong></small>
                     <% } else { %>
-                        <small class="text-form text-muted">Position: <%=user.job%></small>
+                        <small class="text-form text-muted">Department: <%=user.department%>, Position: <%=user.job%></small>
                         <hr>
                         <a href="/secure/users" class="btn btn-outline-dark">Go Back</a>
                         <a href="/secure/users/<%=user._id%>/edit" class="btn btn-outline-dark">Edit</a>
@@ -46,16 +46,22 @@
                   <li class="list-group-item"><strong>Role:</strong>  <span class="userfloatRight"><%=user.role%></span></li>
               </ul>
           </div>
+          <% if(user.role === 1 || user.department === "eSport"){ %>
           <br>
-          <% if(user.role === 1){ %>
           <div class="card">
               <div class="card-header">
                   <strong>eSports info</strong>
               </div>
               <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><strong>Game:</strong> <span class="userfloatRight">test</span></li>
-                  <li class="list-group-item"><strong>Position:</strong> <span class="userfloatRight">test</span></li>
-                  <li class="list-group-item"><strong>Team Leader:</strong> <span class="userfloatRight">test</span></li>
+                  <li class="list-group-item"><strong>Game:</strong> <span class="userfloatRight"><%=user.game%></span></li>
+                  <li class="list-group-item"><strong>Position:</strong> <span class="userfloatRight"><%=user.gamePosition%></span></li>
+                  <li class="list-group-item"><strong>Team Leader:</strong> <span class="userfloatRight">
+                        <% if(user.gameTeamLeader != true) { %>
+                            No
+                        <% } else { %>
+                            Yes
+                        <% } %>
+                  </span></li>
               </ul>
           </div>
           <% } %>
