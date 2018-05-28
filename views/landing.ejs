@@ -29,6 +29,11 @@
                     <%= error %>
                   </div>
                   <% } %>
+                  <% if(success && success.length > 0) { %>
+                  <div class="alert alert-success" role="alert">
+                    <%= success %>
+                  </div>
+                  <% } %>
                   <label>Username</label>
                   <input type="text" class="form-control" name="username" placeholder="Enter username">
                   <small class="form-text text-muted">This is <strong>not</strong> equal to your first name.</small>

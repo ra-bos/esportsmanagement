@@ -133,6 +133,7 @@ var Team = mongoose.model("Team", teamSchema);
 // Index
 app.get("/", function(req, res){
     if(req.isAuthenticated()){
+        req.flash("success", "Welcome back, " + req.user.firstName)
         res.redirect("/secure")
         return;
     }
@@ -151,6 +152,7 @@ app.post("/login", passport.authenticate("local",
 // Logout 
 app.get("/logout", function(req, res){
     req.logout();
+    req.flash("success", "You are logged out!")
     res.redirect("/");
 });
 
@@ -165,7 +167,7 @@ app.get("/secure", isLoggedIn, function(req, res){
 app.get("/secure/news", isLoggedIn, function(req, res){
     Post.find().sort({created: -1}).exec(function(err, post){
         if(err){
-            console.log(err);
+            req.flash("error", err)
         } else {
             res.render("secure/news", {post: post});
         }
@@ -185,22 +187,26 @@ app.post("/secure/news", isLoggedIn, function(req, res){
     var longDesc = req.body.longDesc;
     var author = {
         id: req.user._id,
-        username: req.user.username
+        username: req.user.username,
+        firstName: req.user.firstName
     };
     var newPost = {title: title, image: image, shortDesc: shortDesc, longDesc: longDesc, author: author};
     Post.create(newPost, function(err, newPost){
         if(err){
-            console.log(err);
+            req.flash("error", err);
+            res.redirect("back");
         } else {
-            res.redirect("/secure/news")
+            req.flash("success", "Post: " + newPost.title + " Posted!");
+            res.redirect("/secure/news");
         }
-    })
+    });
 });
 // Show post
 app.get("/secure/news/:id", isLoggedIn, function(req, res){
     // Find post with id
     Post.findById(req.params.id).exec(function(err, foundPost){
         if(err || !foundPost){
+            req.flash("error", "Post not found!");
             res.redirect("back");
         } else {
             // Render show template with given id
@@ -212,6 +218,7 @@ app.get("/secure/news/:id", isLoggedIn, function(req, res){
 app.get("/secure/news/:id/edit", isLoggedIn, function(req, res){
     Post.findById(req.params.id, function(err, foundPost){
         if(err || !foundPost){
+            req.flash("error", "Could not edit post!");
             res.redirect("back");
         } else {
             res.render("secure/news/edit", {post: foundPost});
@@ -223,8 +230,10 @@ app.put("/secure/news/:id", isLoggedIn, function(req, res){
     // Find and update correct post
     Post.findByIdAndUpdate(req.params.id, req.body.post, function(err, updatedPost){
         if(err){
+            req.flash("error", "Could not update post!");
             res.redirect("/secure/");
         } else {
+            req.flash("success", "Post: " + updatedPost.title + " edited!");
             res.redirect("/secure/news/" + req.params.id);
         }
     });
@@ -234,8 +243,10 @@ app.delete("/secure/news/:id", isLoggedIn, function(req, res){
     // Destroy post
     Post.findByIdAndRemove(req.params.id, function(err){
         if(err){
+            req.flash("error", "Could not remove post");
             res.redirect("/secure/news");
         } else {
+            req.flash("success", "Post succesfully removed!");
             res.redirect("/secure/news");
         }
     });
@@ -245,7 +256,8 @@ app.delete("/secure/news/:id", isLoggedIn, function(req, res){
 app.get("/secure/users", isLoggedIn, function(req, res){
     User.find({role: { $ne: 1}}).sort({created: -1}).exec(function(err, user){
         if(err){
-            console.log(err);
+            req.flash("error", err);
+            req.redirect("back");
         } else {
             res.render("secure/users", {user: user});
         }
@@ -261,6 +273,7 @@ app.get("/secure/users/new", isLoggedIn, function(req, res){
 app.get("/secure/users/new/step2/:id", isLoggedIn, function(req, res){
     User.findById(req.params.id, function(err, user){
         if(err || !user){
+            req.flash("error", "Something went wrong...");
             res.redirect("/secure/users/");
         } else {
             res.render("secure/users/final", {user: user});
@@ -273,16 +286,20 @@ app.post("/secure/users", isLoggedIn, function(req, res){
     var newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, function(err, user){
         if(err){
-            console.log(err);
+            req.flash("error", err);
+            res.redirect("back");
+        } else {
+            req.flash("success", "New user: " + user.firstName + " added!");
+            res.redirect("/secure/users/new/step2/" + user._id);
         }
-        res.redirect("/secure/users/new/step2/" + user._id);
-        });
+    });
 });
 
 // Get user with iD
 app.get("/secure/users/:id", isLoggedIn, function(req, res){
     User.findById(req.params.id, function(err, user){
         if(err || !user){
+            req.flash("error", "Can not find user!");
             res.redirect("back");
         } else {
             res.render("secure/users/show", {user: user});
@@ -294,6 +311,7 @@ app.get("/secure/users/:id", isLoggedIn, function(req, res){
 app.get("/secure/users/:id/edit", isLoggedIn, function(req, res){
     User.findById(req.params.id, function(err, user){
         if(err || !user){
+            req.flash("erorr", "Could not find user!");
             res.redirect("back");
         } else {
             res.render("secure/users/edit", {user: user});
@@ -305,9 +323,10 @@ app.get("/secure/users/:id/edit", isLoggedIn, function(req, res){
 app.put("/secure/users/:id", isLoggedIn, function(req, res){
     User.findByIdAndUpdate(req.params.id, req.body.user, function(err, user){
         if(err){
-            console.log(err)
+            req.flash("error", err);
             res.redirect("back")
         } else {
+            req.flash("success", "User: " + user.firstName + " successfully edited!")
             res.redirect("/secure/users/" + req.params.id)
         }
     });
@@ -318,8 +337,10 @@ app.delete("/secure/users/:id", isLoggedIn, function(req, res){
     // Destroy post
     User.findByIdAndRemove(req.params.id, function(err){
         if(err){
+            req.flash("error", "Could not remove user!");
             res.redirect("/secure/users");
         } else {
+            req.flash("success", "User removed!");
             res.redirect("/secure/users");
         }
     });
@@ -330,7 +351,8 @@ app.delete("/secure/users/:id", isLoggedIn, function(req, res){
 app.get("/secure/players", isLoggedIn, function(req, res){
     User.find({"role": 1}).sort({created: -1}).exec(function(err, user){
         if(err){
-            console.log(err);
+            req.flash("error", err);
+            res.redirect("back");
         } else {
             res.render("secure/players", {user: user});
         }
@@ -351,7 +373,7 @@ app.get("*", function(req, res){
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         if(req.user.role === 0) {
-            return res.render("inactive");
+            res.render("inactive")
         } else {
             return next();
         }
@@ -365,9 +387,12 @@ function isManagement(req, res,next){
         if(req.user.role === 3) {
             return next();
         } else {
+            req.flash("error","You are not authorized to do this!")
             res.redirect("back");
         }
     }
+    req.flash("error", "You need to be logged in to do that!")
+    res.redirect("/")
 }
 
 
