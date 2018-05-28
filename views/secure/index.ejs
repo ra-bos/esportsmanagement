@@ -6,7 +6,7 @@
         <img class="card-img-top" src="<%=currentUser.avatar%>" alt="Card image cap">
         <div class="card-body">
           <label>Hi, <%=currentUser.firstName%></label>
-          <small class="form-text"><i><%=currentUser.job%>, <%=currentUser.department%></i></small>
+          <small class="form-text"><i>Dept: <%=currentUser.department%>, Job: <%=currentUser.job%></i></small>
           <hr>
           <a href="/secure/users/<%=currentUser._id%>" class="btn btn-light btn-sm" role="button" aria-pressed="true">Profile</a>
           <a href="/logout" class="btn btn-light btn-sm" role="button" aria-pressed="true">Log out</a>
