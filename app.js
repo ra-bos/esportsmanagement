@@ -9,7 +9,9 @@ var passportLocalMongoose = require("passport-local-mongoose");
 var methodOverride = require("method-override");
 var flash = require("connect-flash");
 
-mongoose.connect("mongodb://localhost/esports");
+// mongoose.connect("mongodb://localhost/esports");
+mongoose.connect("mongodb://ricardo:sander22@ds143070.mlab.com:43070/tulipesports");
+
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -265,12 +267,12 @@ app.get("/secure/users", isLoggedIn, function(req, res){
 });
 
 // New User Step 1
-app.get("/secure/users/new", isLoggedIn, function(req, res){
+app.get("/secure/users/new", function(req, res){
     res.render("secure/users/new");
 });
 
 //  New User Step 2
-app.get("/secure/users/new/step2/:id", isLoggedIn, function(req, res){
+app.get("/secure/users/new/step2/:id", function(req, res){
     User.findById(req.params.id, function(err, user){
         if(err || !user){
             req.flash("error", "Something went wrong...");
@@ -282,7 +284,7 @@ app.get("/secure/users/new/step2/:id", isLoggedIn, function(req, res){
 });
 
 // Add new user
-app.post("/secure/users", isLoggedIn, function(req, res){
+app.post("/secure/users", function(req, res){
     var newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, function(err, user){
         if(err){
