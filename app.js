@@ -289,7 +289,6 @@ app.post("/secure/users", isLoggedIn, function(req, res){
             req.flash("error", err);
             res.redirect("back");
         } else {
-            req.flash("success", "New user: " + user.firstName + " added!");
             res.redirect("/secure/users/new/step2/" + user._id);
         }
     });
@@ -326,7 +325,7 @@ app.put("/secure/users/:id", isLoggedIn, function(req, res){
             req.flash("error", err);
             res.redirect("back")
         } else {
-            req.flash("success", "User: " + user.firstName + " successfully edited!")
+            req.flash("success", "User successfully edited!")
             res.redirect("/secure/users/" + req.params.id)
         }
     });

@@ -69,15 +69,21 @@
 </nav>
 <% if(error && error.length > 0) { %>
 <div class="container">
+  <div class="row col-md-12">
     <div class="alert alert-danger" role="alert">
       <%= error %>
     </div>
+  </div>
 </div>
 <% } %>
 <% if(success && success.length > 0) { %>
 <div class="container">
-    <div class="alert alert-success" role="alert">
-      <%= success %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
     </div>
+  </div>
 </div>
 <% } %>
