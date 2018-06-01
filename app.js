@@ -9,7 +9,8 @@ var passportLocalMongoose = require("passport-local-mongoose");
 var methodOverride = require("method-override");
 var flash = require("connect-flash");
 
-mongoose.connect(process.env.DATABASEURL);
+var url = process.env.DATABASEURL || "mongodb://localhost/esports"
+mongoose.connect(url);
 
 
 app.set("view engine", "ejs");
