@@ -9,8 +9,8 @@ var passportLocalMongoose = require("passport-local-mongoose");
 var methodOverride = require("method-override");
 var flash = require("connect-flash");
 
-// mongoose.connect("mongodb://localhost/esports");
-mongoose.connect("mongodb://ricardo:sander22@ds143070.mlab.com:43070/tulipesports");
+mongoose.connect(process.env.DATABASEURL);
+
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
