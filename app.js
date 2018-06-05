@@ -375,7 +375,7 @@ app.get("*", function(req, res){
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         if(req.user.role === 0) {
-            res.render("inactive")
+            return res.render("inactive")
         } else {
             return next();
         }
